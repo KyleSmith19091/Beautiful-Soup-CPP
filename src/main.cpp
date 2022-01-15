@@ -42,14 +42,15 @@ void test3() {
     auto table_object = soup.find(page_content, "table", {{"class", "tv-data-table tv-screener-table"}});
     auto table_rows = soup.find_all(table_object, "tr");
     std::cout << table_rows.size() << "\n";
-    std::cout << "TEST3 Done\n";
 }
 
 int main() {
 
-    //test1();
-    test2();
-    //test3();
+    BeautifulSoup soup("https://www.tradingview.com/markets/stocks-usa/market-movers-gainers/");
+    auto page_content = soup.find("div", {{"class", "tv-content"}});
+    auto table_object = soup.find(page_content, "table", {{"class", "tv-data-table tv-screener-table"}});
+    auto table_rows = soup.find_all(table_object, "tr");
+    std::cout << table_rows.size() << "\n";
 
     return 0;
 }
